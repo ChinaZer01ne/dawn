@@ -1,10 +1,10 @@
-package com.dawn;
+package com.dawn.chaos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DawnApplicationTests {
+class DawnChaosApplicationTests {
 
     @Test
     void contextLoads() {
