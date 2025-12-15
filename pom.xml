@@ -13,6 +13,7 @@
     <modules>
         <module>dawn-bom</module>
         <module>dawn-chaos</module>
+        <module>dawn-websocket</module>
     </modules>
 
     <properties>
