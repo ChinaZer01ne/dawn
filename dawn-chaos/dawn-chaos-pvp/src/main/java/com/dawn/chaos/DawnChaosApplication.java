@@ -3,13 +3,11 @@ package com.dawn.chaos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 @Slf4j
 @SpringBootApplication
+// 依赖的websocket包需要被识别到，后面优化
 @ComponentScan(basePackages = {"com.dawn.websocket"})
 public class DawnChaosApplication {
 

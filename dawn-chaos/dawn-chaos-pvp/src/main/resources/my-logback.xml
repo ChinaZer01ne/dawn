@@ -24,6 +24,11 @@
         </encoder>
     </appender>
 
+    <!-- 默认配置（没有激活profile时生效） -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
     <springProfile name="dev">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
