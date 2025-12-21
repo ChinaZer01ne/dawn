@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "websocket")
-public class WebsocketProperties {
+public class WebSocketProperties {
     /**
 
      * 是否开启websocket
