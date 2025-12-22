@@ -24,7 +24,7 @@ public class MessageDispatcher {
         this.handlers = handlers;
     }
     
-    public void dispatch(WebSocketSession session, WsMessage message) {
+    public void dispatch(WebSocketSession session, WsMessage<?> message) {
         for (MessageHandler handler : handlers) {
             if (handler.canHandle(message.getType())) {
                 handler.handle(session, message);

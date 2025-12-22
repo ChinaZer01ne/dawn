@@ -1,10 +1,11 @@
 package com.dawn.websocket.handler;
 
+import com.dawn.chaos.service.AnswerService;
 import com.dawn.chaos.service.MatchService;
 import com.dawn.websocket.enums.MessageTypeEnum;
 import com.dawn.websocket.message.WsMessage;
+import com.dawn.websocket.request.AnswerRequest;
 import com.dawn.websocket.request.MatchRequest;
-import com.dawn.websocket.utiils.MessageUtils;
 import com.dawn.websocket.utiils.WebSocketUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -17,39 +18,30 @@ import org.springframework.web.socket.WebSocketSession;
 import java.util.Objects;
 
 /**
- * 匹配消息处理器
+ * 答题消息处理器
  *
  * @author peach
  * @since 2025/12/21 22:23
  */
 @Slf4j
 @Component
-public class MatchMessageHandler implements MessageHandler {
+public class AnswerMessageHandler implements MessageHandler {
 
     @Resource
-    private MatchService  matchService;
+    private AnswerService answerService;
     @Resource
     private ObjectMapper objectMapper;
-
     @Override
     public void handle(WebSocketSession session, WsMessage<?> message) {
         // 处理匹配请求...
-        MatchRequest request = objectMapper.convertValue(message.getData(), MatchRequest.class);
-        // 添加到匹配池
-        matchService.addMatchPool(Long.valueOf(session.getAttributes().get("userId").toString()));
-        // TODO 匹配
-        //getOpponentInfo();
-        try {
-            WebSocketUtils.sendMessage(session, objectMapper.writeValueAsString(request));
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            WebSocketUtils.sendMessage(session, e.getMessage());
-        }
+        AnswerRequest request = objectMapper.convertValue(message.getData(), AnswerRequest.class);
+
+        //WebSocketUtils.sendMessage(session, request);
     }
 
     @Override
     public boolean canHandle(String type) {
-        return Objects.equals(type, MessageTypeEnum.MATCH_REQUEST.getType());
+        return Objects.equals(type, MessageTypeEnum.ANSWER_REQUEST.getType());
     }
 
 }

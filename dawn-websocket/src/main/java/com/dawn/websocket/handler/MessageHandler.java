@@ -17,5 +17,5 @@ public interface MessageHandler {
      * @param session :
      * @param message :
      */
-    void handle(WebSocketSession session, WsMessage message);
+    void handle(WebSocketSession session, WsMessage<?> message);
 }

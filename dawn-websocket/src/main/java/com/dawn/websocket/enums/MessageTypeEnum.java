@@ -6,7 +6,9 @@ package com.dawn.websocket.enums;
  */
 public enum MessageTypeEnum {
 
-    MATCH_REQUEST("MATCH_REQUEST");
+    MATCH_REQUEST("MATCH_REQUEST"),
+    ANSWER_REQUEST("ANSWER_REQUEST"),
+    ;
 
     private String type;
 

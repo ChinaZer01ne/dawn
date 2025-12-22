@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @Slf4j
 @SpringBootApplication
 // 依赖的websocket包需要被识别到，后面优化
-@ComponentScan(basePackages = {"com.dawn.websocket"})
+@ComponentScan(basePackages = {"com.dawn.chaos", "com.dawn.websocket"})
 public class DawnChaosApplication {
 
     public static void main(String[] args) {
