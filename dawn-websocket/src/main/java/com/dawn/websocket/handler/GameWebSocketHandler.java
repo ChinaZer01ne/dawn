@@ -2,6 +2,7 @@ package com.dawn.websocket.handler;
 
 import com.dawn.websocket.config.WebSocketProperties;
 import com.dawn.websocket.message.WsMessage;
+import com.dawn.websocket.session.SessionHolder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +44,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler  {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         System.out.println("afterConnectionEstablished");
+        SessionHolder.addSession((Long) session.getAttributes().get("userId"), session);
     }
 
 

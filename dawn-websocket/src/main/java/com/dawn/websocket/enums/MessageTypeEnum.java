@@ -1,12 +1,16 @@
 package com.dawn.websocket.enums;
 
+import lombok.Getter;
+
 /**
  * 定义所有消息类型
  * 游戏中的所有操作都对应一个消息类型
  */
+@Getter
 public enum MessageTypeEnum {
 
     MATCH_REQUEST("MATCH_REQUEST"),
+    MATCH_CANCEL("MATCH_CANCEL"),
     ANSWER_REQUEST("ANSWER_REQUEST"),
     ;
 
@@ -16,18 +20,13 @@ public enum MessageTypeEnum {
         this.type = type;
     }
 
-    public String getType() {
-        return type;
-    }
     //// 系统消息
     //public static final String PING = "PING";  // 心跳请求
     //public static final String PONG = "PONG";  // 心跳响应
     //public static final String ERROR = "ERROR";  // 错误消息
     //
     //// 匹配相关
-    //public static final String MATCH_REQUEST = "MATCH_REQUEST";  // 请求匹配
     //public static final String MATCH_RESPONSE = "MATCH_RESPONSE";  // 匹配响应
-    //public static final String MATCH_CANCEL = "MATCH_CANCEL";  // 取消匹配
     //public static final String MATCH_SUCCESS = "MATCH_SUCCESS";  // 匹配成功
     //public static final String MATCH_TIMEOUT = "MATCH_TIMEOUT";  // 匹配超时
     //

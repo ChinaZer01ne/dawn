@@ -1,4 +1,7 @@
 package com.dawn.chaos.service;
+
+import com.dawn.chaos.request.MatchJoinRequest;
+
 /**
  * 匹配服务
  *
@@ -13,4 +16,16 @@ public interface MatchService {
      * @return boolean
      */
     boolean addMatchPool(Long playerId);
+
+    /**
+     * 匹配加入
+     * @param userId
+     * @param request
+     */
+    void matchJoin(Long userId, MatchJoinRequest request);
+    /**
+     * 匹配取消
+     */
+    void matchCancel();
+
 }

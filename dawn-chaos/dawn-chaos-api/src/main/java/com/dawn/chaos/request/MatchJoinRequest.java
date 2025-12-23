@@ -1,4 +1,4 @@
-package com.dawn.websocket.request;
+package com.dawn.chaos.request;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 2025/12/22 21:11
  */
 @Data
-public class MatchRequest {
+public class MatchJoinRequest {
 
     /**
      * 匹配类型

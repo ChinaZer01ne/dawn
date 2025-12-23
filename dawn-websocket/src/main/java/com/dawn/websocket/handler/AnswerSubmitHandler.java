@@ -1,14 +1,9 @@
 package com.dawn.websocket.handler;
 
 import com.dawn.chaos.service.AnswerService;
-import com.dawn.chaos.service.MatchService;
 import com.dawn.websocket.enums.MessageTypeEnum;
 import com.dawn.websocket.message.WsMessage;
-import com.dawn.websocket.request.AnswerRequest;
-import com.dawn.websocket.request.MatchRequest;
-import com.dawn.websocket.utiils.WebSocketUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.dawn.chaos.request.AnswerSubmitRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +20,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Component
-public class AnswerMessageHandler implements MessageHandler {
+public class AnswerSubmitHandler implements MessageHandler {
 
     @Resource
     private AnswerService answerService;
@@ -34,7 +29,7 @@ public class AnswerMessageHandler implements MessageHandler {
     @Override
     public void handle(WebSocketSession session, WsMessage<?> message) {
         // 处理匹配请求...
-        AnswerRequest request = objectMapper.convertValue(message.getData(), AnswerRequest.class);
+        AnswerSubmitRequest request = objectMapper.convertValue(message.getData(), AnswerSubmitRequest.class);
 
         //WebSocketUtils.sendMessage(session, request);
     }

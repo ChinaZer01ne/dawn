@@ -3,11 +3,7 @@ package com.dawn.websocket.handler;
 import com.dawn.chaos.service.MatchService;
 import com.dawn.websocket.enums.MessageTypeEnum;
 import com.dawn.websocket.message.WsMessage;
-import com.dawn.websocket.request.MatchRequest;
-import com.dawn.websocket.utiils.MessageUtils;
 import com.dawn.websocket.utiils.WebSocketUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +20,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Component
-public class MatchMessageHandler implements MessageHandler {
+public class MatchCancelHandler implements MessageHandler {
 
     @Resource
     private MatchService  matchService;
@@ -33,14 +29,8 @@ public class MatchMessageHandler implements MessageHandler {
 
     @Override
     public void handle(WebSocketSession session, WsMessage<?> message) {
-        // 处理匹配请求...
-        MatchRequest request = objectMapper.convertValue(message.getData(), MatchRequest.class);
-        // 添加到匹配池
-        matchService.addMatchPool(Long.valueOf(session.getAttributes().get("userId").toString()));
-        // TODO 匹配
-        //getOpponentInfo();
         try {
-            WebSocketUtils.sendMessage(session, objectMapper.writeValueAsString(request));
+            matchService.matchCancel();
         } catch (Exception e) {
             log.error(e.getMessage());
             WebSocketUtils.sendMessage(session, e.getMessage());
@@ -49,7 +39,7 @@ public class MatchMessageHandler implements MessageHandler {
 
     @Override
     public boolean canHandle(String type) {
-        return Objects.equals(type, MessageTypeEnum.MATCH_REQUEST.getType());
+        return Objects.equals(type, MessageTypeEnum.MATCH_CANCEL.getType());
     }
 
 }

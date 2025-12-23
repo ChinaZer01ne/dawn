@@ -1,5 +1,6 @@
 package com.dawn.websocket.utiils;
 
+import com.dawn.websocket.session.SessionHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -24,6 +25,19 @@ public class WebSocketUtils {
     public static void sendMessage(WebSocketSession session, String message) {
         try {
             session.sendMessage(new TextMessage(message));
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    /**
+     * 消息发送
+     * @param userId :
+     * @param message :
+     */
+    public static void sendMessage(Long userId, String message) {
+        try {
+            SessionHolder.getSession(userId).sendMessage(new TextMessage(message));
         } catch (IOException e) {
             log.error(e.getMessage());
         }

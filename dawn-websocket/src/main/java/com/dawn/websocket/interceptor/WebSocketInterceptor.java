@@ -1,5 +1,6 @@
 package com.dawn.websocket.interceptor;
 
+import com.dawn.websocket.session.SessionHolder;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.stereotype.Component;
